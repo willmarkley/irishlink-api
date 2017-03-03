@@ -1,0 +1,23 @@
+{
+  "name": "irishlink-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willmarkley/irishlink-api.git"
+  },
+  "author": "William Markley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/willmarkley/irishlink-api/issues"
+  },
+  "homepage": "https://github.com/willmarkley/irishlink-api#readme",
+  "dependencies": {
+    "express": "^4.15.0",
+    "mongodb": "^2.2.24"
+  }
+}
