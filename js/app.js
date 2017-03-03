@@ -42,13 +42,8 @@ app.get('/developers', function (req, res) {
 	});
 })
 
-app.get('/', function (req, res) {
-	mongo.connect(databaseURL, function(err, db) {
-		assert.equal(null, err);
-		console.log("Connected successfully to mongo server");
-		retrieveAll(db, 'test', res);
-		db.close();
-	});
+app.get('/*', function (req, res) {
+	res.send('Invalid API call');
 })
 
 
