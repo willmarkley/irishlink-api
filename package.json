@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/willmarkley/irishlink-api#readme",
   "dependencies": {
+    "body-parser": "^1.17.0",
     "express": "^4.15.0",
     "mongodb": "^2.2.24"
   }
