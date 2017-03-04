@@ -2,6 +2,8 @@
 const express = require('express')
 const app = express()
 
+const bodyParser = require('body-parser')
+
 const mongo = require('mongodb').MongoClient
   , assert = require('assert');
 
@@ -19,6 +21,22 @@ function retrieveAll(db, collectionName, response) {
 			console.log("Successfully Sent JSON data");
 			response.json(allData[0]);
 	});
+}
+
+function addEntry(db, collectionName, data, response) {
+	var collection = db.collection(collectionName);
+	if !Object.keys(data).length {  // json  data is empty
+		console.log("JSON data is empty");
+		response.send("JSON data is empty");
+	}
+	else {
+		collection.insertOne(data, function(err, result) {
+			assert.equal(err, null);
+			assert.equal(1, result.insertedCount);
+			console.log("Successfully added JSON data");
+			response.send("Successfully added JSON data");
+		});
+	}
 }
 
 
@@ -42,14 +60,34 @@ app.get('/developers', function (req, res) {
 	});
 })
 
+app.post('/ideas', function (req, res) {
+	mongo.connect(databaseURL, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected successfully to mongo server");
+		addEntry(db, 'ideas', req.body, res);
+		db.close();
+	});
+})
+
+
+app.post('/developers', function (req, res) {
+	mongo.connect(databaseURL, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected successfully to mongo server");
+		addEntry(db, 'developers', req.body, res);
+		db.close();
+	});
+})
+
 app.get('/*', function (req, res) {
 	res.send('Invalid API call');
 })
 
 
 
-// prettify JSON
+// prettify JSON and set body parser
 app.set('json spaces', 4);
+app.use(bodyParser.json());
 
 // listen on port
 app.listen(port, function () {
