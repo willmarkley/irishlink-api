@@ -31,5 +31,8 @@ npm install mongodb --save
 
 # Install express
 npm install express --save
+
+# Install body-parser
+npm install body-parser --save
 ```
 
