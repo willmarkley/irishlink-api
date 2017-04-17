@@ -15,14 +15,35 @@ const databaseURL = 'mongodb://localhost:27017/irishlink';
 
 // database functions
 function retrieveAll(db, collectionName, response, tok) {
-	var resData = {}
 	var collection = db.collection(collectionName);
-	collection.find({token: tok}, { _id: 0, token: 0}).toArray( function(err, allData) {
+	if (tok){
+		collection.find({}, { _id: 0}).toArray( function(err, allData) {
 			assert.equal(err, null);
-			console.log("Successfully Sent JSON data");
-			resData["entries"] = allData;
-			response.json(allData);
-	});
+			for (var i=0; i<allData.length; i++){
+				if (allData[i].token===tok){
+					allData[i].mod = 1;
+				}
+				else {
+					allData[i].mod = 0;
+				}
+				delete allData[i].token;
+			}
+/*                	collection.find({token: {$ne: tok}}, { _id: 0, token: 0}).toArray( function(err, noTokData) {
+                        	assert.equal(err, null);
+                        	for (var i=0; i<noTokData.length; i++){
+                                	noTokData[i].mod = 0;
+                        	}
+				resData.concat(noTokData);
+                        	console.log(resData);
+*/				console.log("Successfully Sent JSON data");
+				response.json(allData);
+//			});
+		});
+	}
+	else {
+		console.log("Invalid Token");
+		response.send("Invalid Token");
+	}
 }
 
 function addEntry(db, collectionName, data, response) {
