@@ -14,10 +14,10 @@ const databaseURL = 'mongodb://localhost:27017/irishlink';
 
 
 // database functions
-function retrieveAll(db, collectionName, response) {
+function retrieveAll(db, collectionName, response, tok) {
 	var resData = {}
 	var collection = db.collection(collectionName);
-	collection.find({}, { _id: 0, token: 0}).toArray( function(err, allData) {
+	collection.find({token: tok}, { _id: 0, token: 0}).toArray( function(err, allData) {
 			assert.equal(err, null);
 			console.log("Successfully Sent JSON data");
 			resData["entries"] = allData;
@@ -65,7 +65,7 @@ app.get('/ideas', function (req, res) {
 	mongo.connect(databaseURL, function(err, db) {
 		assert.equal(null, err);
 		console.log("Connected successfully to mongo server");
-		retrieveAll(db, 'ideas', res);
+		retrieveAll(db, 'ideas', res, req.get('From'));
 		db.close();
 	});
 })
@@ -74,7 +74,7 @@ app.get('/developers', function (req, res) {
 	mongo.connect(databaseURL, function(err, db) {
 		assert.equal(null, err);
 		console.log("Connected successfully to mongo server");
-		retrieveAll(db, 'developers', res);
+		retrieveAll(db, 'developers', res, req.get('From'));
 		db.close();
 	});
 })
