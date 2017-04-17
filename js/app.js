@@ -42,6 +42,16 @@ function addEntry(db, collectionName, data, response) {
 	}
 }
 
+function deleteEntry(db, collectionName, data, response) {
+	var collection = db.collection(collectionName);
+	console.log(data);
+	collection.deleteOne( {token: data.token}, function(err, result) {
+		assert.equal(err, null);
+		assert.equal(1, result.result.n);
+		console.log("Removed the document with the given token");
+		response.send("Removed the document with the given token");
+	});
+}
 
 
 // routing
@@ -80,6 +90,24 @@ app.post('/developers', function (req, res) {
 		assert.equal(null, err);
 		console.log("Connected successfully to mongo server");
 		addEntry(db, 'developers', req.body, res);
+		db.close();
+	});
+})
+
+app.delete('/ideas', function (req, res) {
+	mongo.connect(databaseURL, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected successfully to mongo server");
+		deleteEntry(db, 'ideas', req.body, res);
+		db.close();
+	});
+})
+
+app.delete('/developers', function (req, res) {
+	mongo.connect(databaseURL, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected successfully to mongo server");
+		deleteEntry(db, 'developers', req.body, res);
 		db.close();
 	});
 })
