@@ -45,7 +45,7 @@ function addEntry(db, collectionName, data, response) {
 function deleteEntry(db, collectionName, data, response) {
 	var collection = db.collection(collectionName);
 	console.log(data);
-	collection.deleteOne( {token: data.token}, function(err, result) {
+	collection.deleteOne(data, function(err, result) {
 		assert.equal(err, null);
 		assert.equal(1, result.result.n);
 		console.log("Removed the document with the given token");
