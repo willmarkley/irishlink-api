@@ -16,11 +16,14 @@ const databaseURL = 'mongodb://localhost:27017/irishlink';
 // database functions
 function retrieveAll(db, collectionName, response, tok) {
 	var collection = db.collection(collectionName);
-	if (tok){
+	console.log("=====>"+JSON.stringify(tok)+"<=====")
+	//if (tok){
 		collection.find({}, { _id: 0}).toArray( function(err, allData) {
 			assert.equal(err, null);
 			for (var i=0; i<allData.length; i++){
-				if (allData[i].token===tok){
+				//console.log(tok);
+                                //console.log(allData[i].token);
+				if (allData[i].token==tok){
 					allData[i].mod = 1;
 				}
 				else {
@@ -39,11 +42,11 @@ function retrieveAll(db, collectionName, response, tok) {
 				response.json(allData);
 //			});
 		});
-	}
+/*	}
 	else {
 		console.log("Invalid Token");
 		response.send("Invalid Token");
-	}
+	}*/
 }
 
 function addEntry(db, collectionName, data, response) {
@@ -82,20 +85,21 @@ function deleteEntry(db, collectionName, data, response) {
 // routing
 app.use(bodyParser.json());
 
-app.get('/ideas', function (req, res) {
+
+app.put('/ideas', function (req, res) {
 	mongo.connect(databaseURL, function(err, db) {
 		assert.equal(null, err);
 		console.log("Connected successfully to mongo server");
-		retrieveAll(db, 'ideas', res, req.get('From'));
+		retrieveAll(db, 'ideas', res, req.body.token);
 		db.close();
 	});
 })
 
-app.get('/developers', function (req, res) {
+app.put('/developers', function (req, res) {
 	mongo.connect(databaseURL, function(err, db) {
 		assert.equal(null, err);
 		console.log("Connected successfully to mongo server");
-		retrieveAll(db, 'developers', res, req.get('From'));
+		retrieveAll(db, 'developers', res, req.body.token);
 		db.close();
 	});
 })
