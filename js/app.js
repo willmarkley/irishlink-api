@@ -47,9 +47,13 @@ function deleteEntry(db, collectionName, data, response) {
 	console.log(data);
 	collection.deleteOne(data, function(err, result) {
 		assert.equal(err, null);
-		assert.equal(1, result.result.n);
-		console.log("Removed the document with the given token");
-		response.send("Removed the document with the given token");
+		if (result.result.n!=1){
+			console.log("The document with the given token was NOT removed");
+			response.send("The document with the given token was NOT removed");
+		}else{
+			console.log("Removed the document with the given token");
+			response.send("Removed the document with the given token");
+		}
 	});
 }
 
