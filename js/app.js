@@ -23,8 +23,6 @@ function retrieveAll(db, collectionName, response, requestbody) {
 		collection.find({}, { _id: 0}).toArray( function(err, allData) {
 			assert.equal(err, null);
 			for (var i=0; i<allData.length; i++){
-				//console.log(tok);
-                                //console.log(allData[i].token);
 				if (allData[i].token==tok){
 					allData[i].mod = 1;
 				}
@@ -33,16 +31,8 @@ function retrieveAll(db, collectionName, response, requestbody) {
 				}
 				delete allData[i].token;
 			}
-/*                	collection.find({token: {$ne: tok}}, { _id: 0, token: 0}).toArray( function(err, noTokData) {
-                        	assert.equal(err, null);
-                        	for (var i=0; i<noTokData.length; i++){
-                                	noTokData[i].mod = 0;
-                        	}
-				resData.concat(noTokData);
-                        	console.log(resData);
-*/				console.log("Successfully Sent JSON data");
-				response.json(allData);
-//			});
+			console.log("Successfully Sent JSON data");
+			response.json(allData);
 		});
 /*	}
 	else {
