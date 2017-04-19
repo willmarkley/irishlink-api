@@ -17,6 +17,7 @@ const databaseURL = 'mongodb://localhost:27017/irishlink';
 function retrieveAll(db, collectionName, response, requestbody) {
 	console.log("=====>"+JSON.stringify(requestbody)+"<=====")
 	var collection = db.collection(collectionName);
+	var tok = requestbody.token
 	console.log("=====>"+JSON.stringify(tok)+"<=====")
 	//if (tok){
 		collection.find({}, { _id: 0}).toArray( function(err, allData) {
