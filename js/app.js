@@ -14,7 +14,8 @@ const databaseURL = 'mongodb://localhost:27017/irishlink';
 
 
 // database functions
-function retrieveAll(db, collectionName, response, tok) {
+function retrieveAll(db, collectionName, response, requestbody) {
+	console.log("=====>"+JSON.stringify(requestbody)+"<=====")
 	var collection = db.collection(collectionName);
 	console.log("=====>"+JSON.stringify(tok)+"<=====")
 	//if (tok){
@@ -90,7 +91,7 @@ app.put('/ideas', function (req, res) {
 	mongo.connect(databaseURL, function(err, db) {
 		assert.equal(null, err);
 		console.log("Connected successfully to mongo server");
-		retrieveAll(db, 'ideas', res, req.body.token);
+		retrieveAll(db, 'ideas', res, req.body);
 		db.close();
 	});
 })
@@ -99,7 +100,7 @@ app.put('/developers', function (req, res) {
 	mongo.connect(databaseURL, function(err, db) {
 		assert.equal(null, err);
 		console.log("Connected successfully to mongo server");
-		retrieveAll(db, 'developers', res, req.body.token);
+		retrieveAll(db, 'developers', res, req.body);
 		db.close();
 	});
 })
