@@ -25,15 +25,21 @@ sudo mkdir -p /data/db  ## default
 # Setup project
 npm init
 
+# First Time Setup
+  # Install Driver between mongodb and nodejs
+  npm install mongodb --save
 
-# Install Driver between mongodb and nodejs
-npm install mongodb --save
+  # Install express
+  npm install express --save
 
-# Install express
-npm install express --save
+  # Install body-parser
+  npm install body-parser --save
 
-# Install body-parser
-npm install body-parser --save
+# Package.json available
+  npm install
+
+# Steup NGINX
+sudo yum install nginx
 ```
 
 ## API Usage
