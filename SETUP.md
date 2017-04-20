@@ -46,6 +46,10 @@ git clone https://github.com/willmarkley/irishlink-api.git
 
 # Package.json available
   npm install
+
+# PM2 Node manager
+npm install -g pm2
+pm2 start irishlink-api/js/app.js
 ```
 
 
