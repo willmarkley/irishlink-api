@@ -16,3 +16,5 @@
 -Buy a domain name  
 -[Certbot](https://certbot.eff.org/#centosrhel7-nginx)  
 `sudo letsencrypt certonly --standalone`
+
+## Put Token in NS User Defaults
