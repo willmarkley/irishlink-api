@@ -18,3 +18,6 @@
 `sudo letsencrypt certonly --standalone`
 
 ## Put Token in NS User Defaults
+
+
+## Fix email button on table view
