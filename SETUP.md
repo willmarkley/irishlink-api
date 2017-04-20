@@ -24,6 +24,7 @@ sudo yum install nginx
 
 
 # Clone github
+git clone https://github.com/willmarkley/irishlink-api.git
 ```
 
 
