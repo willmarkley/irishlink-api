@@ -7,12 +7,12 @@ Irish Link is an iOS application that connects those who want a software applica
 ```
 PUT  (GET request)
   Content-Type:   application/json
-  Body:           JSON containing key "token" with unique token"
+  Body:           JSON containing key "token" with unique token
 
 POST
   Content-Type:   application/json
   Body:           JSON containing
-                  -key "token" with unique token"
+                  -key "token" with unique token
                   -other data relevant to object
 DELETE
   Content-Type:   application/json
