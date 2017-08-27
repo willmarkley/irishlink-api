@@ -14,3 +14,5 @@ else
     sudo /usr/local/bin/mongod > /dev/null &
     pm2 restart all
     sudo service nginx restart
+fi
+

@@ -142,5 +142,5 @@ app.set('json spaces', 4);
 
 // listen on port
 app.listen(port, function () {
-  console.log(`App running at https://35.188.19.140:${port}`);
+  console.log(`App running at http://104.197.150.158:${port}`);
 })

@@ -76,7 +76,7 @@ db.developers.insert({"test":"test"})
 # configuration file
 sudo mkdir /etc/nginx/sites-available   # if not present
 sudo mkdir /etc/nginx/sites-enabled     # if not present
-sudo cp irishlink-api/nginx/default /etc/nginx/sites-available
+sudo cp irishlink-api/etc/nginx/default /etc/nginx/sites-available
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # fix access errors if they occur
