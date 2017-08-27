@@ -17,7 +17,7 @@ POST
 DELETE
   Content-Type:   application/json
   Body:           JSON containing
-                  -key "token" with unique token"
-                  --other data contained in the object that will be deleted
+                  -key "token" with unique token
+                  -other data contained in the object that will be deleted
 ```
 
