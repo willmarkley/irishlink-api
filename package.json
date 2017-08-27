@@ -11,7 +11,7 @@
     "url": "git+https://github.com/willmarkley/irishlink-api.git"
   },
   "author": "William Markley",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/willmarkley/irishlink-api/issues"
   },
