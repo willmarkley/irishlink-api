@@ -1,8 +1,8 @@
 # irishlink-api
 
-Irish Link is an iOS application that connects those who want a software application made with those who know how to make it.  By putting these two isolated groups on campus in contact, the ideators can make their ideas come to life and developers can gain valuable experience outside of the classroom.  
+Irish Link is an [iOS application][repo] that connects those who want a software application made with those who know how to make it.  By putting these two isolated groups on campus in contact, the ideators can make their ideas come to life and developers can gain valuable experience outside of the classroom.  
 
-The mobile application developed in Swift and Javascript by William Markley.  The REST API back-end was built with [Node.js][1] and [MongoDB][2], using JSON as the HTTP bodies. [PM2][3] and [NGINX][4] were used to make the back-end a stable production environment. The front-end [iOS application](https://github.com/willmarkley/irishlink-ios) was developed in Xcode and relies on [Google Sign-In][5] and [IQ Keyboard Manager][6].  
+The mobile application developed in Swift and Javascript by William Markley.  The REST API back-end was built with [Node.js][1] and [MongoDB][2], using JSON as the HTTP bodies. [PM2][3] and [NGINX][4] were used to make the back-end a stable production environment. The [front-end iOS application][repo] was developed in Xcode and relies on [Google Sign-In][5] and [IQ Keyboard Manager][6].  
 
 If you're interested in helping with the project, please contact wmarkley@nd.edu.  
 
@@ -44,3 +44,4 @@ DELETE
 [4]: https://nginx.org/
 [5]: https://developers.google.com/identity/sign-in/ios/
 [6]: https://github.com/hackiftekhar/IQKeyboardManager
+[repo]: https://github.com/willmarkley/irishlink-ios
